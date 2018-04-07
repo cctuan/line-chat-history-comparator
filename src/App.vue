@@ -54,6 +54,11 @@ export default {
   },
   methods: {
     loadExternal: async function() {
+      // const Hazel = await import('../_default/Hazel.json')
+      // const Miru = await import('../_default/Miru.json')
+      // const Annie = await import('../_default/Annie.json')
+      // const April = await import('../_default/April.json')
+      // MergeChat([April, Annie, Miru, Hazel])
     },
     onFileChane(evt) {
       let files = evt.target.files

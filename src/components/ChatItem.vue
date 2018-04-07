@@ -1,10 +1,12 @@
 <template>
   <p class="message" :class="className" :style="messageStyles">
     {{message.content}}
+    <span class="time">{{hourMins}}</span>
   </p>
 </template>
 
 <script>
+import {toHourMins} from '../utils/TimeUtils'
 export default {
   name: 'ChatDayBlock',
   props: {
@@ -24,6 +26,9 @@ export default {
     position() {
       return this.message.position || 0
     },
+    hourMins() {
+      return toHourMins(this.message.time)
+    },
     messageStyles() {
       let blockWidth = 100 / this.totalColumns
       return {
@@ -41,6 +46,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .message {
+  position: relative;
   width: 45%;
   border-radius: 10px;
   padding: 0.5em;
@@ -56,5 +62,11 @@ export default {
 .message-in {
   background: #F1F0F0;
   color: black;
+}
+.time {
+  position: absolute;
+  bottom: -10px;
+  color: black;
+  right: 0px;
 }
 </style>
